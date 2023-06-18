@@ -1,0 +1,32 @@
+import java.util.Scanner;
+class Complex{
+    int img1,real1,img2,real2;
+    Scanner obj=new Scanner(System.in);
+    Complex()
+    {System.out.println("please eneter the 1st real number");
+        real1=obj.nextInt();
+        System.out.println("please eneter the 1st img number");
+        img1=obj.nextInt();
+        System.out.println("please eneter the 2nd real number");
+        real2=obj.nextInt();
+        System.out.println("please eneter the 2nd img number");
+        img2=obj.nextInt();
+        System.out.println("1st complex number:"+real1+(" + ")+img1+"i");
+        System.out.println("2nd complex number:"+real2+(" + ")+img2+"i");
+    }
+     void addComplex(){
+      System.out.println("addition of given complex number:-");
+      System.out.println((real1+real2)+" + "+(img1+img2)+"i");
+    }
+    void mulcomplex(){
+        System.out.println("multiplication of complex number:-");
+        System.out.println(((real1*real2)-(img1*img2))+" + "+((real1*img2)+(real2*img1))+"i");
+    }
+}
+public class exp1 {
+    public static void main(String[] args) {
+      Complex obj1=new Complex();
+      obj1.addComplex();
+      obj1.mulcomplex();  
+    }
+}
