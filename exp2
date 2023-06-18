@@ -1,0 +1,61 @@
+import java.util.Scanner;
+class onlineShoppingportal
+{
+String customerType,promocode;
+double amount,bill;
+Scanner obj=new Scanner(System.in);    
+onlineShoppingportal(){
+}
+void Prime(double amount){
+if(amount>1000){
+bill=amount-(amount*0.30);
+display(bill);
+}
+else
+{
+    bill=amount-(amount*0.20);
+    display(bill);
+}
+}
+void regular(double amount,String promocode){
+    this.amount=amount;
+    this.promocode=promocode;
+if(promocode.equals("GET10")){
+    if(amount<500){
+    bill=amount-10;
+    display(bill);
+}
+else{
+    bill=amount-amount*0.10;
+    display(bill);
+}}
+else{
+    display(amount);
+}
+}
+void display(double bill){
+    this.bill=bill;
+    System.out.println("amount after discount::"+bill); 
+
+}
+}
+class exp2{
+    static String customer1,promocode;
+    static double amount;
+    public static void main(String[] args) {
+        onlineShoppingportal call=new onlineShoppingportal();
+        Scanner scan=new Scanner(System.in);
+        System.out.println("please enter the amount");
+        amount=scan.nextDouble();
+        System.out.println("Amount before discount::"+amount);
+        System.out.println("please enter the type of customer");
+        customer1=scan.next();
+        if(customer1.equals("prime")){
+        call.Prime(amount);}
+        else{
+        System.out.println("please enter the promocode");
+        promocode=scan.next();
+        call.regular(amount, promocode);
+         }
+     }
+}
