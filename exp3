@@ -1,0 +1,184 @@
+// PART A
+import java.util.Scanner;
+class Time{
+    int hours,mintues,hours1,mintues1,sumHrs,sumMins,subHrs,subMins;
+    Scanner obj=new Scanner(System.in);
+    Time(){
+       System.out.println("please enter the first hours");
+       hours=obj.nextInt();
+       System.out.println("please enter the second hours");
+       hours1=obj.nextInt();
+       System.out.println("please enter the first mintues");
+       mintues=obj.nextInt();
+       System.out.println("please enter the second mintues");
+       mintues1=obj.nextInt();
+       }
+    void addition(){
+        sumHrs=hours+hours1;
+        sumMins=mintues+mintues1;
+        if(sumMins>60){
+            sumMins=(sumMins-60);
+            sumHrs++;
+        }
+        if(sumHrs>24){
+            sumHrs=0;
+        }
+        System.out.println("addition");
+        System.out.println("Time="+sumHrs+"h:"+sumMins+"min");
+    }
+    void substraction(){
+        subHrs=hours-hours1;
+        subMins=mintues-mintues1;
+        if(subMins>60){
+            subMins=(subMins-60);
+            subHrs++;
+        }
+        if(subHrs>24){
+            subHrs=0;
+        }
+        System.out.println("substraction");
+        System.out.println("Time="+subHrs+"h:"+subMins+"min");    
+    }
+}
+// PART B
+class GreatClock extends Time{
+    double seconds,milliseconds,seconds1,milliseconds1,sumsec,summsec,subsec,submsec;
+    Scanner object=new Scanner(System.in);
+    GreatClock(){
+        System.out.println("please enter the value of seconds::");
+        seconds=object.nextInt();
+        System.out.println("please enter the value of seconds::");
+        seconds1=object.nextInt();
+        System.out.println("please enter the value of milliseconds::");
+        milliseconds=object.nextInt();
+        System.out.println("please enter the value of milliseconds::");
+        milliseconds1=object.nextInt();
+      }
+    void secondAddition() {
+        sumsec=seconds+seconds1;
+        summsec=milliseconds+milliseconds1;
+    if(sumsec>60){
+            sumsec=(sumsec-60);
+            sumMins++;
+        }
+        if(summsec>100){
+            summsec=(summsec-100);
+            sumsec++;
+        }
+        System.out.println("addition");
+        System.out.println("Time="+sumHrs+"h:"+sumMins+"min:"+sumsec+"sec"+summsec+"msec");
+    }
+    void secondsubstraction() {
+        subsec=seconds-seconds1;
+        submsec=milliseconds-milliseconds1;
+     if(subsec>60){
+            subsec=(subsec-60);
+            subMins++;
+        }
+        if(submsec>100){
+            submsec=(submsec-100);
+            subsec++;
+        }
+        System.out.println("substraction");
+        System.out.println("Time="+subHrs+"h:"+subMins+"min:"+subsec+"sec:"+submsec+"msec");
+    }
+}
+class TimeZone extends GreatClock{
+    int a;
+    Scanner s=new Scanner(System.in);
+    TimeZone(){
+        }
+    void convert(){
+        System.out.println("please enter the value of a(1.USA 2.JAPAN 3.DUBAI)");
+        a=s.nextInt();
+    switch (a) {
+        case 1:
+            sumHrs=(9+sumHrs);
+            sumMins=(sumMins+30);
+            if(sumMins>60){
+            sumMins=(sumMins-60);
+            sumHrs++;}
+            if(sumHrs>24){
+            sumHrs=0;
+            }
+            subHrs=(9+subHrs);
+            subMins=(30+subMins);
+            if(subMins>60){
+            subMins=(subMins-60);
+            subHrs++;
+            }
+            if(subHrs>24){
+            subHrs=0;
+            }
+            System.out.println("Time in USA sytle::");
+            System.out.println("addition in USA sytle");
+            System.out.println("Time="+sumHrs+"h:"+sumMins+"min:"+sumsec+"sec"+summsec+"msec");
+            System.out.println("substraction in USA sytle");
+            System.out.println("Time="+subHrs+"h:"+subMins+"min:"+subsec+"sec:"+submsec+"msec");
+            break;
+        case 2:
+            sumHrs=(sumHrs-3);
+            sumMins=(sumMins-30);
+            if(sumMins>60){
+            sumMins=(sumMins-60);
+            sumHrs++;
+            }
+         if(sumHrs>24){
+         sumHrs=0;
+         }
+         subHrs=(subHrs-3);
+            subMins=(subMins-30);
+            if(subMins>60){
+            subMins=(subMins-60);
+            subHrs++;
+            }
+            if(subHrs>24){
+            subHrs=0;
+            }
+            System.out.println("Time in JAPANESE sytle::");
+            System.out.println("addition in JAPANESE sytle");
+            System.out.println("Time="+sumHrs+"h:"+sumMins+"min:"+sumsec+"sec"+summsec+"msec");
+            System.out.println("substraction in JAPANESE sytle");
+            System.out.println("Time="+subHrs+"h:"+subMins+"min:"+subsec+"sec:"+submsec+"msec");
+            break;
+            case 3:
+            sumHrs=(1+sumHrs);
+            sumMins=(sumMins+30);
+            if(sumMins>60){
+            sumMins=(sumMins-60);
+            sumHrs++;
+            }
+         if(sumHrs>24){
+         sumHrs=0;
+         }
+         subHrs=(1+subHrs);
+            subMins=(30+subMins);
+            if(subMins>60){
+            subMins=(subMins-60);
+            subHrs++;
+            }
+            if(subHrs>24){
+            subHrs=0;
+            }
+            System.out.println("Time in DUBAI sytle::");
+            System.out.println("addition in DUBAI sytle");
+            System.out.println("Time="+sumHrs+"h:"+sumMins+"min:"+sumsec+"sec"+summsec+"msec");
+            System.out.println("substraction in DUBAI sytle");
+            System.out.println("Time="+subHrs+"h:"+subMins+"min:"+subsec+"sec:"+submsec+"msec");
+            break;
+        default:
+        System.out.println("Please enter valid input");
+            break;
+    }
+}
+}
+public class exp3 {
+    public static void main(String[] args) {
+        TimeZone obj1=new TimeZone();
+        obj1.addition();
+       obj1.substraction();
+        obj1.secondAddition();
+        obj1.secondsubstraction();
+        obj1.convert();
+    }
+}
