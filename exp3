@@ -1,7 +1,5 @@
 // PART A
 import java.util.Scanner;
-
-import org.w3c.dom.Node;
 class Time{
     int hours,mintues,hours1,mintues1,sumHrs,sumMins,subHrs,subMins,noDay;
     Scanner obj=new Scanner(System.in);
