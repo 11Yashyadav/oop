@@ -26,6 +26,7 @@ class Time{
         }
         System.out.println("addition");
         System.out.println("Time="+noDay+"Day"+sumHrs+"h:"+sumMins+"min");
+        noDay=0;
     }
     void substraction(){
         if(hours>=hours1 && mintues>=mintues1){
@@ -40,7 +41,8 @@ class Time{
             noDay++;
         }
         System.out.println("substraction");
-        System.out.println("Time="+noDay+"Day"+subHrs+"h:"+subMins+"min");    
+        System.out.println("Time="+noDay+"Day"+subHrs+"h:"+subMins+"min");   
+        noDay=0; 
     }
     else{
        System.out.println("substraction is not possible"); 
@@ -130,6 +132,7 @@ class TimeZone extends GreatClock{
             System.out.println("Time="+noDay+" Day "+sumHrs+" h "+sumMins+" min "+sumsec+" sec "+summsec+" msec");
             System.out.println("substraction in USA sytle");
             System.out.println("Time="+noDay+" Day "+subHrs+" h "+subMins+" min "+subsec+" sec "+submsec+" msec");
+            noDay=0;
             break;
         case 2:
             sumHrs=(sumHrs-3);
@@ -157,6 +160,7 @@ class TimeZone extends GreatClock{
             System.out.println("Time="+noDay+" Day "+sumHrs+" h "+sumMins+" min "+sumsec+" sec "+summsec+" msec");
             System.out.println("substraction in JAPANESE sytle");
             System.out.println("Time="+noDay+" Day "+subHrs+" h "+subMins+" min "+subsec+" sec "+submsec+" msec");
+           noDay=0;
             break;
             case 3:
             sumHrs=(1+sumHrs);
@@ -184,6 +188,7 @@ class TimeZone extends GreatClock{
             System.out.println("Time="+noDay+" Day "+sumHrs+" h :"+sumMins+" min "+sumsec+" sec "+summsec+" msec");
             System.out.println("substraction in DUBAI sytle");
             System.out.println("Time="+noDay+" Day "+subHrs+" h "+subMins+" min "+subsec+" sec "+submsec+" msec");
+            noDay=0;
             break;
         default:
         System.out.println("Please enter valid input");
@@ -193,11 +198,11 @@ class TimeZone extends GreatClock{
 }
 public class exp3 {
     public static void main(String[] args) {
-        Time obj1=new Time();
+        GreatClock obj1=new GreatClock();
         obj1.addition();
         obj1.substraction();
-       // obj1.secondAddition();
-       // obj1.secondsubstraction();
+        obj1.secondAddition();
+        obj1.secondsubstraction();
         //obj1.convert();
     }
 }
