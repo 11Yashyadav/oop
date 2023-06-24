@@ -1,7 +1,9 @@
 // PART A
 import java.util.Scanner;
+
+import org.w3c.dom.Node;
 class Time{
-    int hours,mintues,hours1,mintues1,sumHrs,sumMins,subHrs,subMins;
+    int hours,mintues,hours1,mintues1,sumHrs,sumMins,subHrs,subMins,noDay;
     Scanner obj=new Scanner(System.in);
     Time(){
        System.out.println("please enter the first hours");
@@ -21,12 +23,14 @@ class Time{
             sumHrs++;
         }
         if(sumHrs>24){
-            sumHrs=0;
+            sumHrs=sumHrs-24;
+            noDay++;
         }
         System.out.println("addition");
-        System.out.println("Time="+sumHrs+"h:"+sumMins+"min");
+        System.out.println("Time="+noDay+"Day"+sumHrs+"h:"+sumMins+"min");
     }
     void substraction(){
+        if(hours>=hours1 && mintues>=mintues1){
         subHrs=hours-hours1;
         subMins=mintues-mintues1;
         if(subMins>60){
@@ -34,11 +38,16 @@ class Time{
             subHrs++;
         }
         if(subHrs>24){
-            subHrs=0;
+            subHrs=subHrs-24;
+            noDay++;
         }
         System.out.println("substraction");
-        System.out.println("Time="+subHrs+"h:"+subMins+"min");    
+        System.out.println("Time="+noDay+"Day"+subHrs+"h:"+subMins+"min");    
     }
+    else{
+       System.out.println("substraction is not possible"); 
+    }
+}
 }
 // PART B
 class GreatClock extends Time{
@@ -55,20 +64,22 @@ class GreatClock extends Time{
         milliseconds1=object.nextInt();
       }
     void secondAddition() {
-        sumsec=seconds+seconds1;
-        summsec=milliseconds+milliseconds1;
-    if(sumsec>60){
+         sumsec=seconds+seconds1;
+         summsec=milliseconds+milliseconds1;
+         if(sumsec>60){
             sumsec=(sumsec-60);
             sumMins++;
-        }
-        if(summsec>100){
+         }
+         if(summsec>100){
             summsec=(summsec-100);
             sumsec++;
+            
         }
         System.out.println("addition");
         System.out.println("Time="+sumHrs+"h:"+sumMins+"min:"+sumsec+"sec"+summsec+"msec");
     }
     void secondsubstraction() {
+        if(seconds>=seconds1 && milliseconds>=milliseconds1){
         subsec=seconds-seconds1;
         submsec=milliseconds-milliseconds1;
      if(subsec>60){
@@ -82,6 +93,10 @@ class GreatClock extends Time{
         System.out.println("substraction");
         System.out.println("Time="+subHrs+"h:"+subMins+"min:"+subsec+"sec:"+submsec+"msec");
     }
+    else{
+        System.out.println("substraction is not possible");
+    }
+}
 }
 class TimeZone extends GreatClock{
     int a;
@@ -99,7 +114,8 @@ class TimeZone extends GreatClock{
             sumMins=(sumMins-60);
             sumHrs++;}
             if(sumHrs>24){
-            sumHrs=0;
+            sumHrs=sumHrs-24;
+            noDay++;
             }
             subHrs=(9+subHrs);
             subMins=(30+subMins);
@@ -108,7 +124,8 @@ class TimeZone extends GreatClock{
             subHrs++;
             }
             if(subHrs>24){
-            subHrs=0;
+            subHrs=subHrs-24;
+            noDay++;
             }
             System.out.println("Time in USA sytle::");
             System.out.println("addition in USA sytle");
@@ -124,7 +141,8 @@ class TimeZone extends GreatClock{
             sumHrs++;
             }
          if(sumHrs>24){
-         sumHrs=0;
+         sumHrs=sumHrs-24;
+         noDay++;
          }
          subHrs=(subHrs-3);
             subMins=(subMins-30);
@@ -133,7 +151,8 @@ class TimeZone extends GreatClock{
             subHrs++;
             }
             if(subHrs>24){
-            subHrs=0;
+            subHrs=subHrs-24;
+            noDay++;
             }
             System.out.println("Time in JAPANESE sytle::");
             System.out.println("addition in JAPANESE sytle");
@@ -149,7 +168,8 @@ class TimeZone extends GreatClock{
             sumHrs++;
             }
          if(sumHrs>24){
-         sumHrs=0;
+         sumHrs=sumHrs-24;
+         noDay++;
          }
          subHrs=(1+subHrs);
             subMins=(30+subMins);
@@ -158,7 +178,8 @@ class TimeZone extends GreatClock{
             subHrs++;
             }
             if(subHrs>24){
-            subHrs=0;
+            subHrs=subHrs-24;
+            noDay++;
             }
             System.out.println("Time in DUBAI sytle::");
             System.out.println("addition in DUBAI sytle");
@@ -174,11 +195,11 @@ class TimeZone extends GreatClock{
 }
 public class exp3 {
     public static void main(String[] args) {
-        TimeZone obj1=new TimeZone();
+        GreatClock obj1=new GreatClock();
         obj1.addition();
-       obj1.substraction();
+        obj1.substraction();
         obj1.secondAddition();
         obj1.secondsubstraction();
-        obj1.convert();
+        //obj1.convert();
     }
 }
