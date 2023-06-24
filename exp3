@@ -29,7 +29,11 @@ class Time{
         noDay=0;
     }
     void substraction(){
-        if(hours>=hours1 && mintues>=mintues1){
+        if(hours>=hours1){
+            if(mintues<mintues1){
+                mintues=mintues+60;
+                hours--;
+            }
         subHrs=hours-hours1;
         subMins=mintues-mintues1;
         if(subMins>60){
@@ -73,13 +77,19 @@ class GreatClock extends Time{
          if(summsec>100){
             summsec=(summsec-100);
             sumsec++;
-            
         }
         System.out.println("addition");
         System.out.println("Time="+sumHrs+" h "+sumMins+" min "+sumsec+" sec "+summsec+" msec");
     }
     void secondsubstraction() {
-        if(seconds>=seconds1 && milliseconds>=milliseconds1){
+        if(seconds<seconds1){
+            seconds=seconds+60;
+            mintues--;
+        }
+        if(milliseconds<milliseconds1){
+            milliseconds=milliseconds+100;
+            seconds--;
+        }
         subsec=seconds-seconds1;
         submsec=milliseconds-milliseconds1;
      if(subsec>60){
@@ -92,10 +102,6 @@ class GreatClock extends Time{
         }
         System.out.println("substraction");
         System.out.println("Time="+subHrs+" h "+subMins+" min "+subsec+" sec "+submsec+" msec");
-    }
-    else{
-        System.out.println("substraction is not possible");
-    }
 }
 }
 class TimeZone extends GreatClock{
@@ -162,7 +168,7 @@ class TimeZone extends GreatClock{
             System.out.println("Time="+noDay+" Day "+subHrs+" h "+subMins+" min "+subsec+" sec "+submsec+" msec");
            noDay=0;
             break;
-            case 3:
+        case 3:
             sumHrs=(1+sumHrs);
             sumMins=(sumMins+30);
             if(sumMins>60){
