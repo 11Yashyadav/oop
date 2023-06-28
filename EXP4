@@ -1,0 +1,73 @@
+import java.time.LocalDate;
+import java.util.*;
+class User{
+String username,password,gender;
+int active;
+double mnumber;
+boolean isactive;
+LocalDate createdate;
+Scanner obj1= new Scanner (System.in);
+User(){
+System.out.println("Please enter the User_Name :");
+username=obj1.next();
+System.out.println("Please enter the Password : ");
+password=obj1.next();
+System.out.println("Please enter the Gender  : ");
+gender=obj1.next();
+System.out.println("Please enter the Moblie Number :  ");
+mnumber=obj1.nextDouble();
+System.out.println("User is active or not(1=active,2= inactive) : ");
+active=obj1.nextInt();
+//createdate=nextLocalDate.now(obj1.nextInt(),obj1.nextInt(),obj1.nextInt());
+}
+void printUser(){}
+void IsActive()
+{
+if(active ==1){
+System.out.println("User is active");
+}
+else{
+System.out.println("User is not active");
+}
+}
+void checkGender(){
+System.out.println("Username : "+username);
+System.out.println("Password : "+password);
+System.out.println("Mobile Number : "+mnumber);
+IsActive();
+System.out.println("Gender : "+gender);
+LocalDate createdate = LocalDate.now();
+System.out.println("Created Date : "+createdate);
+}
+}
+class Standard extends User {
+String alias,lastlogin,role;
+Scanner obj2 = new Scanner (System.in);
+Standard(){
+System.out.println("Please enter the Alias : ");
+alias=obj2.next();
+System.out.println("Please enter the Last Logic : ");
+lastlogin=obj2.next();
+System.out.println("Please enter the role : ");
+role=obj2.next();
+}
+}
+class custom extends User{
+String email,securitykey,manager;
+Scanner obj = new Scanner (System.in);
+custom(){
+System.out.println("Please enter the your  email : ");
+email=obj.next();
+System.out.println("Please enter the Security Key : ");
+securitykey=obj.next();
+System.out.println("Plese enter the Manager : ");
+manager=obj.next();
+}
+}
+class exp4{
+public static void main(String args[])
+{
+User obj3=new User();
+obj3.checkGender();
+}
+}
