@@ -1,0 +1,122 @@
+import java.util.*;
+class User{
+    String username,password,gender,date,type;
+    long  MNumber;
+    int active;
+    Scanner obj=new Scanner(System.in);
+    User(){}
+    User(String username,String password,String gender,long MNumber,String date){ 
+        this.username=username;
+        this.password=password;
+        this.gender=gender;
+        this.MNumber=MNumber;
+        this.date=date;
+        type=obj.next();
+        }
+     void IsActive(){
+        if(active==1){
+                    System.out.print("Active: True");
+        }
+        else
+        {
+            System.out.print("Active: Flase");
+        }
+    }
+     void printUser(){
+            System.out.print("Please enter the key for Active");
+            active=obj.nextInt();
+            System.out.println("-----------------------------------------------------------------New Data---------------------------------------------------------------------------");
+            System.out.println("Username :"+username);
+            System.out.println("Password :"+password);
+            System.out.println("Gender :"+gender);
+            IsActive();
+            System.out.println();
+            System.out.println("Mobile Number :"+MNumber);
+            System.out.println("Created Date :"+date);
+         }
+}
+class Standard extends User{
+    String alise,lastlogin,role;
+    Standard(String username, String password, String gender, long MNumber, String date) {
+        this.username=username;
+        this.password=password;
+        this.gender=gender;
+        this.MNumber=MNumber;
+        this.date=date;
+        System.out.println("please Enter Your Alise(Nickname):");
+        alise=obj.next();
+        System.out.println("Please enter your last login(hh/mm/ss::)");
+        lastlogin=obj.next();
+        System.out.println("Please ente your role::");
+        role=obj.next();
+    }
+    
+}
+class Custom extends User{
+    String email,SecurityKey,manager;
+    Custom(String username, String password, String gender, long MNumber, String date) {
+        this.username=username;
+        this.password=password;
+        this.gender=gender;
+        this.MNumber=MNumber;
+        this.date=date;
+        System.out.println("please Enter Your valid Email(end with @email.com):");
+        email=obj.next();
+        System.out.println("Please enter your Security Key");
+        SecurityKey=obj.next();
+        System.out.println("Please ente your manager:");
+        manager=obj.next();
+    }   
+}
+public class exp4 {
+    public static void main(String[] args) {
+        Scanner s=new Scanner(System.in);
+        String username,password,gender,date,type;
+        long  MNumber;
+        int ns,nc;
+        System.out.println("Enter the number of Standard User");
+        ns=s.nextInt();
+        System.out.println("Enter the number of Custom User");
+        nc=s.nextInt();
+        System.out.println("Please enter the type of User(S/C):");
+        type=s.next();
+        Standard [] arr =new Standard[ns];
+        for(int i=0;i<ns;i++){
+            System.out.println("-----------------------------------------------------------------New Data---------------------------------------------------------------------------");
+           System.out.println("Please enter the Username:");
+           username=s.next();
+           System.out.println("Please enter the password:");
+           password=s.next();
+           System.out.println("Please neter your Gender:(M/F)");
+           gender=s.next();
+           System.out.println("Please enter Created Date(yyyy/mm/dd): ");
+           date=s.next();
+           System.out.println("Please enter Moblie Number:");
+           MNumber=s.nextLong();
+           arr[i]= new Standard(username, password, gender, MNumber, date);
+        }
+        Custom [] ar =new Custom[nc];
+        for(int i=0;i<nc;i++){
+            System.out.println("------------------------------------------------------------------New Data---------------------------------------------------------------------------");
+           System.out.println("Please enter the Username:");
+           username=s.next();
+           System.out.println("Please enter the password:");
+           password=s.next();
+           System.out.println("Please neter your Gender:(M/F)");
+           gender=s.next();
+           System.out.println("Please enter Created Date(yyyy/mm/dd): ");
+           date=s.next();
+           System.out.println("Please enter Moblie Number:");
+           MNumber=s.nextLong();
+           ar[i]=new Custom(username, password, gender, MNumber, date);
+        }
+        System.out.println("------------------------------------------- Data Of Standard User -------------------------------------------------------------------------------------");
+        for(int i=0;i<ns;i++){
+            arr[i].printUser();
+        }
+        System.out.println("--------------------------------------------- Data Of Custom User -------------------------------------------------------------------------------------");
+        for(int i=0;i<nc;i++){
+            ar[i].printUser();
+        }
+    }   
+}
