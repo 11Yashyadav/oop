@@ -1,0 +1,74 @@
+import java.util.*;
+class BankAccount{
+    long acNo,aadharNo,bal;
+    double ROI;
+    String ownerName;
+    Scanner obj=new Scanner(System.in);
+    BankAccount(){
+        System.out.println("Please the Name of Owner:");
+        ownerName=obj.next();
+        System.out.println("Please enter the Account Number:");
+        acNo=obj.nextLong();
+        System.out.println("Please enter the Aadhar Number:");
+        aadharNo=obj.nextLong();
+        System.out.println("Please enter the Balance:");
+        bal=obj.nextLong();
+    }
+   void openAccount(){
+    System.out.println("Name:"+ownerName);
+    System.out.println("Account Number:"+acNo);
+    System.out.println("Aadhar Number:"+aadharNo);
+    System.out.println("Balance:"+bal);
+    }
+    void deposite(long amount){
+        bal+=amount;
+    }
+    void closeAccount(){
+
+    }
+    void upadateInterest(){
+        ROI=0.05;
+    }
+}
+interface Debitable{
+      void withdraw();
+}
+class FixedDepositAccount extends BankAccount{
+ double lockInPeriod;
+ void upadateInterest(){
+    System.out.println("Please enter the Lock In Period(in yrs)");
+    lockInPeriod=obj.nextDouble();
+    if(lockInPeriod<=2 &&  lockInPeriod>=1){
+        ROI=0.06;
+    }
+    if(lockInPeriod<=5 && lockInPeriod>2){
+        ROI=0.065;
+    }
+    if(lockInPeriod>5){
+        ROI=0.07;
+    }
+ }
+ void closeAccount(){
+    
+
+ }
+}
+class SavingAccount extends BankAccount{
+    SavingAccount(){
+    ROI=0.04;}
+    void withdraw( long amt){
+        if(bal>amt){
+            bal-=amt;
+        }
+        else{
+            System.out.println("insufficent balence");
+        }
+    }
+}
+
+public class exp5 {
+    public static void main(String[] args) {
+        
+    }
+    
+}
