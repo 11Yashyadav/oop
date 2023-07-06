@@ -1,74 +1,106 @@
 import java.util.*;
+import java.util.concurrent.ThreadLocalRandom;
 class BankAccount{
-    long acNo,aadharNo,bal;
+    double acNo,interest;
+    long aadharNo,bal;
     double ROI;
     String ownerName;
     Scanner obj=new Scanner(System.in);
-    BankAccount(){
+    void input(){
         System.out.println("Please the Name of Owner:");
         ownerName=obj.next();
-        System.out.println("Please enter the Account Number:");
-        acNo=obj.nextLong();
         System.out.println("Please enter the Aadhar Number:");
         aadharNo=obj.nextLong();
         System.out.println("Please enter the Balance:");
         bal=obj.nextLong();
     }
-   void openAccount(){
+    void openAccount(){
     System.out.println("Name:"+ownerName);
-    System.out.println("Account Number:"+acNo);
     System.out.println("Aadhar Number:"+aadharNo);
     System.out.println("Balance:"+bal);
     }
     void deposite(long amount){
         bal+=amount;
+        System.out.println("Balance after deposite:"+bal);
     }
     void closeAccount(){
-
+        System.out.println("Account close successfully");
     }
     void upadateInterest(){
-        ROI=0.05;
+        ROI=5;
+    }
+    void withdraw( long amt){
+        if(bal>amt && bal==amt){
+            bal-=amt;
+            System.out.println("Balance after withdraw:"+bal);
+        }
+        if(bal<amt){
+            System.out.println("insufficent balance");
+        }
     }
 }
 interface Debitable{
-      void withdraw();
+      void withdraw(long amt);
 }
 class FixedDepositAccount extends BankAccount{
  double lockInPeriod;
+    public static int getAccountNoFD(int min,int max){
+    return ThreadLocalRandom.current().nextInt(min,max+1);
+    } 
+ void Display(){
+    int min=55000,max=55999;
+    System.out.println("Account Number:"+getAccountNoFD(min,max));
+ }
  void upadateInterest(){
     System.out.println("Please enter the Lock In Period(in yrs)");
     lockInPeriod=obj.nextDouble();
     if(lockInPeriod<=2 &&  lockInPeriod>=1){
-        ROI=0.06;
-    }
+        ROI=6;
+        System.out.println("Rate of interest:"+ROI+"%");
+       }
     if(lockInPeriod<=5 && lockInPeriod>2){
-        ROI=0.065;
-    }
+        ROI=6.5;
+        System.out.println("Rate of interest:"+ROI+"%");
+        }
     if(lockInPeriod>5){
-        ROI=0.07;
-    }
- }
- void closeAccount(){
-    
-
+        ROI=7;
+        System.out.println("Rate of interest:"+ROI+"%");
+       }
  }
 }
 class SavingAccount extends BankAccount{
-    SavingAccount(){
-    ROI=0.04;}
-    void withdraw( long amt){
-        if(bal>amt){
-            bal-=amt;
-        }
-        else{
-            System.out.println("insufficent balence");
-        }
-    }
+    public static int AccountNo(int min,int max){
+    return ThreadLocalRandom.current().nextInt(min,max+1);
+    } 
+    void Display(){
+    int min=11000,max=11999;
+    ROI=0.04;
+    System.out.println("Accounnt Number:"+AccountNo(min,max));
+    System.out.println("Rate of interest:"+ROI+"%");
+ }
 }
 
 public class exp5 {
     public static void main(String[] args) {
-        
+        long damt;
+        long wamt;
+       Scanner s=new Scanner(System.in);
+      BankAccount obj1=new BankAccount();
+      obj1.input();
+      System.out.println("Please enter the amount to be deposite:");
+       damt=s.nextLong();
+      obj1.deposite(damt);
+      System.out.println("-------------------------------------------------------------Data of Fixed Disposite Account------------------------------------------------------");
+       FixedDepositAccount obj2=new FixedDepositAccount();
+        obj1.openAccount();
+        obj2.Display();
+       obj2.upadateInterest();
+       System.out.println("------------------------------------------------------------------Data of Saving Account-----------------------------------------------------------");
+       SavingAccount obj3= new SavingAccount();
+        obj1.openAccount();
+      obj3.Display();
+      System.out.println("Please enter the amount to be withdraw:");
+       wamt=s.nextLong();
+      obj1.withdraw(wamt);
     }
-    
-}
+    }
