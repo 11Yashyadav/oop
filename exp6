@@ -1,0 +1,46 @@
+import java.io.IOException;
+import java.util.*;
+class generic<T extends Number>{
+    T[] nums;
+    generic(T[] o){
+        nums=o;
+    }
+    double Add(){
+        double sum=0.0;
+        for(int i=0;i<nums.length;i++)
+            sum+=nums[i].doubleValue();
+        return (sum);
+    }
+}
+class test {
+    int num;
+    double sum=0.0;
+}
+class exp6{
+static int num;
+static double sum1;
+    public static void main(String[] args) throws IOException {
+      Integer inums[]=new Integer[5];
+      Scanner obj=new Scanner(System.in);
+      System.out.println("Please enter the number");
+      for(int i=0;i<inums.length;i++)
+        inums[i]=obj.nextInt();
+    generic<Integer>obj1=new generic<Integer>(inums);
+    double v=obj1.Add();
+    System.out.println("Sum of given number :"+v);
+        System.out.println("-----------------Test class-------------");
+      int myArray[] = new int [5];
+      int sum = 0;
+      System.out.println("Enter the number want to sum ");
+      for(int i=0; i<5; i++){
+         myArray[i] = obj.nextInt();
+         sum = sum + myArray[i];
+      }
+      System.out.println("Sum of the number by class test ::"+sum);
+      if(v==sum){
+        System.out.println("addition by both class is equal");
+      }
+      else 
+      throw new IOException("Please enter proper input");
+   }
+}
